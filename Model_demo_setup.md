@@ -127,6 +127,10 @@ The following commands only need to be run once after installation:
 
 <br>
 
+------------------------------------------------------------------------------------------------------------------------------------------
+# Extras for those with Access
+-------------------------------------------------------------------------------------------------------------------------------------------
+
 # Interacting with the Toolkits
 
 OpenAD integrates with `DS4SD`, `RXN`, and has placeholder support for `GT4SD` and `ST4SD`.
@@ -215,130 +219,3 @@ To run a command in bash mode, prepend it with `openad` and make sure to escape 
 
 <br>
 
-# AI Assistant
-
-To enable our AI assistant, you'll need an account with OpenAI. There is a one month free trial.
-
-> **Note:** watsonx coming soon
-
-1. Go to [platform.openai.com](https://platform.openai.com) and create an account
-
-2. Click on the profile icon in the top right and choose "View API keys"
-
-3. Create a new key
-
-4. Run `tell me` to be prompted for your OpenAI API credentials
-
-
-<!-- ![Landing](readme/openai-api-key.png) -->
-
-<a href="https://raw.githubusercontent.com/acceleratedscience/open-ad-toolkit/main/assets/openai-api-key.png" target="_blank"><img src="https://raw.githubusercontent.com/acceleratedscience/open-ad-toolkit/main/assets/openai-api-key.png" /></a>
-
-<br>
-
-# For Developers
-
-OpenAD is fully open source and we encourage contributions. We plan to provide documentation on how to integrate your own toolkits in the future.
-
-If you have any questions in the meantime, please [reach out]({% link about.md %}).
-
-## Installation for Development
-
-<details>
-<summary>Install using the setup wizard (uses poetry)</summary>
-<div markdown="block">
-
-1.  **Step 1: Download the repo**
-
-        git clone https://github.com/acceleratedscience/open-ad-toolkit.git
-
-    > **Note:** To download a specific branch, you can run instead:<br>
-    `git clone -b <branch_name> https://github.com/acceleratedscience/open-ad-toolkit.git`
-
-1.  **Step 2: Launch the setup wizard**
-
-        cd open-ad-toolkit
-        ./setup.sh
-
-</div>
-</details>
-
-<details>
-<summary>Install using pip</summary>
-<div markdown="block">
-
-1.  **Step 0: Before you start**<br>
-Ensure you're running Python 3.10.10 or above. There's multiple ways of doing this, we'll use pyenv.
-
-        git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-        pyenv install 3.10
-
-1.  **Step 1: Set up your virtual environment** (optional)<br>
-
-        python -m venv ~/ad-venv
-        source ~/ad-venv/bin/activate
-
-    > **Note:** To exit the virtual environment, you can run `deactivate`
-
-1.  **Step 2: Download the repo**
-
-        git clone https://github.com/acceleratedscience/open-ad-toolkit.git
-
-    > **Note:** To download a specific branch, you can run instead:<br>
-    `git clone -b <branch_name> https://github.com/acceleratedscience/open-ad-toolkit.git`
-
-1.  **Step 2: Install the requirements**
-
-        cd open-ad-toolkit
-        pip install -e .
-    
-    > **Note:** The -e flag stands for "editable". This means that instead of copying the package's files to the Python site-packages directory as in a regular installation, pip creates a symbolic link (symlink) from your package's source code directory into your Python environment.<br>This way you can make changes to the source code of the package, and those changes are immediately reflected in your Python environment. You don't need to reinstall the package every time you make a change.
-
-</div>
-</details>
-
-
-## Testing a branch
-
-To do a regular install from a particular branch, you can run:
-
-    pip install git+https://github.com/acceleratedscience/open-ad-toolkit.git@<branch_name>
-
-<br>
-
-# Installing on Windows
-
-In order to run OpenAD on Windows 11, you will need to install the Ubuntu WSL package ("Windows Subsystem for Linux").
-
-## Before you start
-
--   **Verify Windows version**<br>
-    To check if you are running Windows 11 or later, press `Win` + `R`, type "winver", and press `Enter`. A window will open showing your Windows version.
-
--   **Verify WSL**<br>
-    To check if you already have WSL installed, run `wsl -l -v` into the terminal. To see more information about your current version of Ubuntu, run `lsb_release -a`
-
-## Installing WSL
-
-Install WSL and create a user called 'openad' or one of your choosing.
-
-    wsl --install Ubuntu-22.04
-
-**Optional:** To setup an Ubuntu Python environment from scratch, continue to [Linux Notes](#linux-notes)
-
-<br>
-
-# Linux Notes
-
-If you wish to setup an Ubuntu Python environment from scratch, run:
-
-    sudo add-apt-repository ppa:deadsnakes/ppa
-    sudo apt update
-    sudo apt install python3.11-full
-    sudo apt install python3-pip
-    sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 100
-    sudo pip install pip --upgrade
-
-If you get an error when running `init_magic`, you may first need to setup the default iPython profile for magic commands.
-
-    ipython profile create
